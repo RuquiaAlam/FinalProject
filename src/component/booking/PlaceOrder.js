@@ -60,7 +60,7 @@ return(
                     <h3>{this.state.hotel_name}</h3>    
                     </div>
                     <div className="panel panel-body">
-                       <form action="http://localhost:7001/paynow " method="POST">
+                       <form action="http://localhost:8000/paynow " method="POST">
                         <div className="row">
 <input type="hidden" name="cost" value={this.state.cost}></input>
 <input type="hidden" name="id" value={this.state.id}></input>

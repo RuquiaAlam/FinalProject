@@ -4,7 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import PlaceOrder from "./component/booking/PlaceOrder";
 import Details from "./component/details/Details.js";
-import ListingApi from "./component/Listing copy/ListingApi";
+import ListingApi from "./component/Listing/ListingApi.js";
 import ViewOrder from "./component/booking/ViewOrder";
 import Login from "./component/auth/Login";
 import Register from "./component/auth/Register";
@@ -24,7 +24,7 @@ return(
 <Route path="/placeOrder/:restName" component={PlaceOrder} />
 <Route path="/viewBooking/:restName" component={ViewOrder} />
 <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
+<Route path="/register" component={Register} />
     <Footer/>
 
     </>

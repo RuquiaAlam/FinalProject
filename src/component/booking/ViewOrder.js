@@ -11,7 +11,7 @@ export default class ViewOrder extends Component {
     {
         super();
         this.state={
-            order:"",
+            orders:"",
 
         };
     }

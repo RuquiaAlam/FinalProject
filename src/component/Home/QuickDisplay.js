@@ -9,7 +9,7 @@ const QuickDisplay =(props)=>
             return mealData.map((item) =>
             {
 return(
-    <Link key={item._id} to ={`listing/${item.mealType_id}`}>
+    <Link key={item._id} to ={`listing/${item.mealtype_id}`}>
         <div class="tileContainer">
                     <div class="tileComponent1">
                         <img src={item.meal_image} alt="Breakfast"></img>
@@ -29,7 +29,7 @@ return(
 
             });
         }
-    }
+    };
 return <div class="mainTileContainer">
     {listMeal(props)}
 </div>

@@ -2,12 +2,12 @@ import React, { Component } from "react";
 
 import "./Listing.css";
 import axios from "axios";
-import ListingDisplay  from "./ListingDisplay";
+import ListingDisplay  from "../../component/Listing/ListingDisplay";
 import CostFilter from "../../component/filter/CostFilter";
 import CuisineFilter from "../../component/filter/CuisineFilter";
 
 
-const url="http://localhost:9002/RestaurantData?mealId="
+const url="http://localhost:7001/RestaurantData?mealId="
 
 
 class ListingApi extends Component {

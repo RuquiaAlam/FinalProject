@@ -1,38 +1,80 @@
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 import "./header.css";
-import { Link } from "react-router-dom";
 
+const url = "http://localhost:4000/api/auth/userInfo";
+class Header extends Component {
+  constructor() {
+    super();
+    this.state = {
+      userData: "",
+    };
+  }
+  handleLogout = () => {
+    sessionStorage.setItem("loginStatus", "loggedIn");
+    sessionStorage.setItem("userInfo", "");
+    sessionStorage.removeItem("ltk");
+    this.setState({ userData: "" });
+    this.props.history.push("/");
+  };
 
+  conditionalHeader = () => {
+    if (this.state.userData.name) {
+      let data = this.state.userData;
+      sessionStorage.setItem("loginStatus", "loggedIn");
+      sessionStorage.setItem("userInfo", JSON.stringify(data));
+      return (
+        <>
+          <Link className="btn btn-success" to="/">
+            <span className="glyphicon glyphicon-user"></span>HI {data.name}
+          </Link>
 
-const  Header =()=>{
- 
-        return (
-            <header>
+          <button className="btn btn-danger" onClick={this.handleLogout}>
+            <span className="glyphicon glyphicon-log-out"></span>LogOut
+          </button>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Link className="btn btn-success" to= "/login" >
+            <span className="glyphicon glyphicon-log-in"></span>LogIn
+          </Link>
 
-            <div id ="brand">
-              
-            <div id ="icon">Zomato App</div>
-       <span id="home">
-       <Link to="/" className= "btn btn-info">
+          <Link className="btn btn-danger" to="/register">
+            <span className="glyphicon glyphicon-user"></span>Signup
+          </Link>
+        </>
+      );
+    }
+  };
+  render() {
+    return (
+      <header>
+        <div id="brand">Zomato App
+        <Link className="btn btn-info" to="/">
           Home
         </Link>
-       </span>
-        
-             
-            
-         
-                
-            
-            <div id ="social">
-            <button className="btn btn-success">
-          <span className="	glyphicon glyphicon-log-in"></span>LogIn
-        </button>
-        <button className="btn btn-danger">
-          <span className="	glyphicon glyphicon-user"></span>SignUp
-        </button>
-            </div>
-            </div>
-            </header>
-        );
-    };
+        <div id="social">{this.conditionalHeader()}</div>
+        </div>
+      
+      </header>
+    );
+  }
+  componentDidMount() {
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "x-access-token": sessionStorage.getItem("ltk"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({
+          userData: data,
+        });
+      });
+  }
+}
 
-export default  Header;
+export default withRouter(Header);

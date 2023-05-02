@@ -7,7 +7,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 
 import MenuList from "./MenuList.js";
-const url="http://localhost:9002";
+const url="http://localhost:7001";
 
 export default class Details extends Component {
 
