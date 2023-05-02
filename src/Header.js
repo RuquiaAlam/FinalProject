@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import "./header.css";
 
-const url = "http://localhost:4000/api/auth/userInfo";
+const url = "http://localhost:8000/auth/userInfo";
 class Header extends Component {
   constructor() {
     super();

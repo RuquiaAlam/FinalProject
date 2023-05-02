@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 
-const url = "http://localhost:8000/api/auth/login";
+const url = "http://localhost:8000/auth/login";
 
 class Login extends Component {
   constructor(props) {
